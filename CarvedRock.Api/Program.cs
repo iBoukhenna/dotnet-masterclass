@@ -1,9 +1,26 @@
 using CarvedRock.Api.Domain;
 using CarvedRock.Api.Interfaces;
 using CarvedRock.Api.Middleware;
+using Serilog;
+using Serilog.Events;
+using Serilog.Enrichers;
 
 var builder = WebApplication.CreateBuilder(args);
 
+var name = typeof(Program).Assembly.GetName().Name;
+
+// Configure Serilog
+Log.Logger = new LoggerConfiguration()
+    .MinimumLevel.Override("Microsoft", LogEventLevel.Information)
+    .Enrich.FromLogContext()
+    .Enrich.WithMachineName()
+    .Enrich.WithProperty("Assembly", name)
+    .WriteTo.Console()
+    .CreateLogger();
+
+builder.Host.UseSerilog();
+
+// Add services to the container.
 builder.Services.AddControllers();
 
 // Register Logic with its implementation
@@ -30,4 +47,17 @@ app.UseAuthorization();
 
 app.MapControllers();
 
-app.Run();
+// Configure logging for the application
+try
+{
+    Log.Information("Starting web host");
+    app.Run();
+}
+catch (Exception ex)
+{
+    Log.Fatal(ex, "Host terminated unexpectedly");
+}
+finally
+{
+    Log.CloseAndFlush();
+}
