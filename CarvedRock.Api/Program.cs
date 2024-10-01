@@ -1,9 +1,9 @@
+using CarvedRock.Api;
 using CarvedRock.Api.Domain;
 using CarvedRock.Api.Interfaces;
 using CarvedRock.Api.Middleware;
 using Serilog;
 using Serilog.Events;
-using Serilog.Enrichers;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -15,6 +15,7 @@ Log.Logger = new LoggerConfiguration()
     .Enrich.FromLogContext()
     .Enrich.WithMachineName()
     .Enrich.WithProperty("Assembly", name)
+    .WriteTo.Seq(serverUrl: "http://host.docker.internal:5341")
     .WriteTo.Console()
     .CreateLogger();
 
@@ -40,6 +41,8 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+app.UseCustomRequestLogging();
 
 app.UseHttpsRedirection();
 
