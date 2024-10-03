@@ -2,6 +2,7 @@ FROM mcr.microsoft.com/dotnet/aspnet:6.0 AS base
 WORKDIR /app
 EXPOSE 5202
 
+ENV SimpleProperty="hello-from-BASE-dockerfile"
 ENV ASPNETCORE_URLS=http://+:5202
 
 # Creates a non-root user with an explicit UID and adds permission to access the /app folder
@@ -25,4 +26,5 @@ RUN dotnet publish "CarvedRock.Api.csproj" -c $configuration -o /app/publish /p:
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
+ENV SimpleProperty="hello-from-FINAL-dockerfile"
 ENTRYPOINT ["dotnet", "CarvedRock.Api.dll"]

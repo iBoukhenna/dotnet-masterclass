@@ -7,6 +7,11 @@ using Serilog.Events;
 
 var builder = WebApplication.CreateBuilder(args);
 
+// Retrieve values from appsettings.json
+var connectionString = builder.Configuration.GetConnectionString("Db");
+var simpleProperty = builder.Configuration["SimpleProperty"];
+var nestedProp = builder.Configuration["Inventory:NestedProperty"];
+
 var name = typeof(Program).Assembly.GetName().Name;
 
 // Configure Serilog
@@ -15,11 +20,23 @@ Log.Logger = new LoggerConfiguration()
     .Enrich.FromLogContext()
     .Enrich.WithMachineName()
     .Enrich.WithProperty("Assembly", name)
+//    .Enrich.WithProperty("ConnectionString", connectionString)
+//    .Enrich.WithProperty("SimpleProperty", simpleProperty)
+//    .Enrich.WithProperty("Inventory:NestedProperty", nestedProp)
     .WriteTo.Seq(serverUrl: "http://host.docker.internal:5341")
     .WriteTo.Console()
     .CreateLogger();
 
 builder.Host.UseSerilog();
+
+Log.ForContext("ConnectionString", connectionString)
+    .ForContext("SimpleProperty", simpleProperty)
+    .ForContext("Inventory:NestedProperty", nestedProp)
+    .Information("Loaded Configuration", connectionString);
+
+var dbgView = (builder.Configuration as IConfigurationRoot)?.GetDebugView();
+Log.ForContext("ConfigurationDebug", dbgView)
+    .Information("Configuration dump.");
 
 // Add services to the container.
 builder.Services.AddControllers();
