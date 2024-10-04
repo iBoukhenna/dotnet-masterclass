@@ -11,7 +11,7 @@
             }
         },
         {
-            "name": ".NET Core Launch CarvedRock",
+            "name": ".NET Core Launch CarvedRock Api",
             "type": "coreclr",
             "request": "launch",
             "preLaunchTask": "build-carvedrock-api",
@@ -36,7 +36,7 @@
             }
         },
         {
-            "name": "Docker .NET Core Launch CarvedRock",
+            "name": "Docker .NET Core Launch CarvedRock Api",
             "type": "docker",
             "request": "launch",
             "preLaunchTask": "docker-run-carvedrock-api: debug",
@@ -48,7 +48,7 @@
             }
         },
         {
-            "name": ".NET Core Launch CarvedRock",
+            "name": ".NET Core Launch CarvedRock App",
             "type": "coreclr",
             "request": "launch",
             "preLaunchTask": "build-carvedrock-app",
@@ -73,7 +73,7 @@
             }
         },
         {
-            "name": "Docker .NET Core Launch CarvedRock",
+            "name": "Docker .NET Core Launch CarvedRock App",
             "type": "docker",
             "request": "launch",
             "preLaunchTask": "docker-run-carvedrock-app: debug",

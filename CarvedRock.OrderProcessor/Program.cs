@@ -1,3 +1,8 @@
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
+using System.Data;
+using System.Data.SqlClient;
+using CarvedRock.OrderProcessor.Repository;
 using Microsoft.Extensions.Configuration;
 using CarvedRock.OrderProcessor;
 using Serilog;
@@ -27,12 +32,21 @@ Log.Logger = new LoggerConfiguration()
     .WriteTo.Console()
     .CreateLogger();
 
+Log.ForContext("ConnectionString", connectionString)
+    .ForContext("SeqUrl", seqUrl)
+    .ForContext("SimpleProperty", simpleProperty)
+    .ForContext("Inventory:NestedProperty", nestedProp)
+    .Information("Loaded Configuration", connectionString);
+
 try
 {
     Log.Information("Starting host");
     IHost host = Host.CreateDefaultBuilder(args)
         .ConfigureServices(services =>
         {
+            services.AddSingleton<IDbConnection>(d =>
+                new SqlConnection(connectionString));
+            services.AddSingleton<IInventoryRepository, InventoryRepository>();
             services.AddHostedService<Worker>();
         }).UseSerilog()
         .Build();

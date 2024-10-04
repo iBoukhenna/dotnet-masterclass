@@ -16,9 +16,11 @@ services:
       - SimpleProperty=hello-from-compose
       - SeqUrl=http://seq_in_dc:5341
       - RabbitMqHost=rabbit_in_dc
+      - ConnectionStrings__Db=Server=sql_in_dc;Database=carvedrock;User Id=cr_dbuser;Password=Sql1nContainersR0cks!;MultipleActiveResultSets=true;
     depends_on:
       - seq_in_dc
       - rabbit_in_dc
+      - sql_in_dc
     volumes:
       - ~/.vsdbg:/remote_debugger:rw
 
@@ -47,9 +49,11 @@ services:
     environment:
       - SeqUrl=http://seq_in_dc:5341
       - RabbitMqHost=rabbit_in_dc
+      - ConnectionStrings__Db=Server=sql_in_dc;Database=carvedrock;User Id=cr_dbuser;Password=Sql1nContainersR0cks!;MultipleActiveResultSets=true;
     depends_on:
       - seq_in_dc
       - rabbit_in_dc
+      - sql_in_dc
     volumes:
       - ~/.vsdbg:/remote_debugger:rw
       
@@ -64,3 +68,14 @@ services:
     image: rabbitmq:3-management
     ports:
       - 8088:15672
+
+  sql_in_dc:
+    build:
+      context: .
+      dockerfile: sql/sql.Dockerfile
+    restart: always
+    ports:
+      - "1440:1433"   
+    environment:      
+      - ACCEPT_EULA=Y
+      - SA_PASSWORD=Sqlc0ntainersFTW!
