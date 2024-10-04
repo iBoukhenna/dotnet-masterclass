@@ -1,0 +1,68 @@
+# Please refer https://aka.ms/HTTPSinContainer on how to setup an https developer certificate for your ASP.NET Core service.
+
+version: '3.4'
+
+services:
+  carvedrockapi:
+    build:
+      context: .
+      dockerfile: CarvedRock.Api/Dockerfile
+    ports:
+      - "8080:5202"
+    environment:
+      - SimpleProperty=hello-from-compose
+      - SeqUrl=http://seq_in_dc:5341
+      - RabbitMqHost=rabbit_in_dc
+      - ConnectionStrings__Db=Server=sql_in_dc;Database=carvedrock;User Id=cr_dbuser;Password=Sql1nContainersR0cks!;MultipleActiveResultSets=true;
+    depends_on:
+      - seq_in_dc
+      - rabbit_in_dc
+      - sql_in_dc
+
+  carvedrockapp:
+    build:
+      context: .
+      dockerfile: CarvedRock.App/Dockerfile
+    ports:
+      - "8081:5298"
+    environment:
+      - SeqUrl=http://seq_in_dc:5341
+      - CarvedRockApiUrl=http://carvedrockapi:5202
+    depends_on:
+      - seq_in_dc
+
+  carvedrockorederprocessor:
+    build:
+      context: .
+      dockerfile: CarvedRock.OrderProcessor/Dockerfile
+    environment:
+      - SeqUrl=http://seq_in_dc:5341
+      - RabbitMqHost=rabbit_in_dc
+      - ConnectionStrings__Db=Server=sql_in_dc;Database=carvedrock;User Id=cr_dbuser;Password=Sql1nContainersR0cks!;MultipleActiveResultSets=true;
+    depends_on:
+      - seq_in_dc
+      - rabbit_in_dc
+      - sql_in_dc
+      
+  seq_in_dc:
+    image: datalust/seq
+    ports:
+      - "8005:80"
+    environment:
+      - ACCEPT_EULA=Y
+
+  rabbit_in_dc:
+    image: rabbitmq:3-management
+    ports:
+      - 8088:15672
+
+  sql_in_dc:
+    build:
+      context: .
+      dockerfile: Sql/sql.Dockerfile
+    restart: always
+    ports:
+      - "1440:1433"   
+    environment:      
+      - ACCEPT_EULA=Y
+      - SA_PASSWORD=Sqlc0ntainersFTW!

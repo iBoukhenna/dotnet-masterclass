@@ -1,0 +1,169 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Docker .NET Attach (Preview)",
+            "type": "docker",
+            "request": "attach",
+            "platform": "netCore",
+            "sourceFileMap": {
+                "/src": "${workspaceFolder}"
+            }
+        },
+        {
+            "name": ".NET Core Launch CarvedRock Api",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "build-carvedrock-api",
+            "program": "${workspaceFolder}/CarvedRock.Api/bin/Debug/net6.0/CarvedRock.Api.dll",
+            "args": [],
+            "cwd": "${workspaceFolder}/CarvedRock.Api",
+            "stopAtEntry": false,
+            "serverReadyAction": {
+                "action": "openExternally",
+                "pattern": "\\\\bNow listening on:\\\\s+(https?://\\\\S+)"
+            },
+            "launchBrowser": {
+                "enabled": true,
+                "args": "${auto-detect-url}/swagger",
+                "windows": {
+                    "command": "cmd.exe",
+                    "args": "/C start ${auto-detect-url}/swagger"
+                }
+            },
+            "env": {
+                "ASPNETCORE_ENVIRONMENT": "Development"
+            }
+        },
+        {
+            "name": "Docker .NET Core Launch CarvedRock Api",
+            "type": "docker",
+            "request": "launch",
+            "preLaunchTask": "docker-run-carvedrock-api: debug",
+            "netCore": {
+                "appProject": "${workspaceFolder}/CarvedRock.Api/CarvedRock.Api.csproj"
+            },
+            "dockerServerReadyAction": {
+                "uriFormat": "%s://localhost:%s/swagger"
+            }
+        },
+        {
+            "name": ".NET Core Launch CarvedRock App",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "build-carvedrock-app",
+            "program": "${workspaceFolder}/CarvedRock.App/bin/Debug/net6.0/CarvedRock.App.dll",
+            "args": [],
+            "cwd": "${workspaceFolder}/CarvedRock.App",
+            "stopAtEntry": false,
+            "serverReadyAction": {
+                "action": "openExternally",
+                "pattern": "\\\\bNow listening on:\\\\s+(https?://\\\\S+)"
+            },
+            "launchBrowser": {
+                "enabled": true,
+                "args": "${auto-detect-url}/swagger",
+                "windows": {
+                    "command": "cmd.exe",
+                    "args": "/C start ${auto-detect-url}/swagger"
+                }
+            },
+            "env": {
+                "ASPNETCORE_ENVIRONMENT": "Development"
+            }
+        },
+        {
+            "name": "Docker .NET Core Launch CarvedRock App",
+            "type": "docker",
+            "request": "launch",
+            "preLaunchTask": "docker-run-carvedrock-app: debug",
+            "netCore": {
+                "appProject": "${workspaceFolder}/CarvedRock.App/CarvedRock.App.csproj"
+            },
+            "dockerServerReadyAction": {
+                "uriFormat": "%s://localhost:%s/swagger"
+            }
+        },
+        {
+            "name": ".NET Core Launch HelloCode",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "build-hellocode-api",
+            "program": "${workspaceFolder}/HelloCode.Api/bin/Debug/net6.0/HelloCode.Api.dll",
+            "args": [],
+            "cwd": "${workspaceFolder}/HelloCode.Api",
+            "stopAtEntry": false,
+            "serverReadyAction": {
+                "action": "openExternally",
+                "pattern": "\\\\bNow listening on:\\\\s+(https?://\\\\S+)"
+            },
+            "launchBrowser": {
+                "enabled": true,
+                "args": "${auto-detect-url}/swagger",
+                "windows": {
+                    "command": "cmd.exe",
+                    "args": "/C start ${auto-detect-url}/swagger"
+                }
+            },
+            "env": {
+                "ASPNETCORE_ENVIRONMENT": "Development"
+            }
+        },
+        {
+            "name": "Docker .NET Core Launch HelloCode",
+            "type": "docker",
+            "request": "launch",
+            "preLaunchTask": "docker-run-hellocode-api: debug",
+            "netCore": {
+                "appProject": "${workspaceFolder}/HelloCode.Api/HelloCode.Api.csproj"
+            },
+            "dockerServerReadyAction": {
+                "uriFormat": "%s://localhost:%s/swagger"
+            }
+        },
+        {
+            "name": ".NET Core Launch InvoiceGenerator",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "build-invoice-generator",
+            "program": "${workspaceFolder}/CarvedRock.InvoiceGenerator/bin/Debug/net6.0/CarvedRock.InvoiceGenerator.dll",
+            "args": [],
+            "cwd": "${workspaceFolder}/CarvedRock.InvoiceGenerator",
+            "stopAtEntry": false,
+            "env": {
+                "ASPNETCORE_ENVIRONMENT": "Development"
+            }
+        },
+        {
+            "name": "Docker .NET Core Launch InvoiceGenerator",
+            "type": "docker",
+            "request": "launch",
+            "preLaunchTask": "docker-run-invoice-generator: debug",
+            "netCore": {
+                "appProject": "${workspaceFolder}/CarvedRock.InvoiceGenerator/CarvedRock.InvoiceGenerator.csproj"
+            }
+        },
+        {
+            "name": ".NET Core Launch OrderProcessor",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "build-order-processor",
+            "program": "${workspaceFolder}/CarvedRock.OrderProcessor/bin/Debug/net6.0/CarvedRock.OrderProcessor.dll",
+            "args": [],
+            "cwd": "${workspaceFolder}/CarvedRock.OrderProcessor",
+            "stopAtEntry": false,
+            "env": {
+                "ASPNETCORE_ENVIRONMENT": "Development"
+            }
+        },
+        {
+            "name": "Docker .NET Core Launch OrderProcessor",
+            "type": "docker",
+            "request": "launch",
+            "preLaunchTask": "docker-run-order-processor: debug",
+            "netCore": {
+                "appProject": "${workspaceFolder}/CarvedRock.OrderProcessor/CarvedRock.OrderProcessor.csproj"
+            }
+        }
+    ]
+}

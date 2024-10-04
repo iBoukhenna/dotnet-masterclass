@@ -12,6 +12,7 @@ var configuration = new ConfigurationBuilder()
 // Retrieve values from configuration
 var connectionString = configuration.GetConnectionString("Db");
 var simpleProperty = configuration["SimpleProperty"];
+var seqUrl = configuration["SeqUrl"];
 var nestedProp = configuration["Inventory:NestedProperty"];
 
 var name = typeof(Program).Assembly.GetName().Name;
@@ -24,7 +25,7 @@ Log.Logger = new LoggerConfiguration()
 //    .Enrich.WithProperty("ConnectionString", connectionString)  // Ajout des propriétés
 //    .Enrich.WithProperty("SimpleProperty", simpleProperty)
 //    .Enrich.WithProperty("Inventory:NestedProperty", nestedProp)
-    .WriteTo.Seq("http://host.docker.internal:5341")
+    .WriteTo.Seq(seqUrl)
     .WriteTo.Console()
     .CreateLogger();
 

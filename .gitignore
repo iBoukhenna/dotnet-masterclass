@@ -12,7 +12,6 @@
 *.sln.docstates
 
 # User-specific folders
-.vscode/
 .vscode-test/
 
 # Mono auto generated files
