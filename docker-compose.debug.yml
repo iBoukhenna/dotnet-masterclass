@@ -13,7 +13,24 @@ services:
       - "8080:5202"
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
-      - SimpleProperty="hello-from-compose"
+      - SimpleProperty=hello-from-compose
+      - SeqUrl=http://seq_in_dc:5341
+    depends_on:
+      - seq_in_dc
+    volumes:
+      - ~/.vsdbg:/remote_debugger:rw
+
+  carvedrockapp:
+    build:
+      context: .
+      dockerfile: CarvedRock.App/Dockerfile
+      args:
+        - configuration=Debug
+    ports:
+      - "8081:5298"
+    environment:
+      - SeqUrl=http://seq_in_dc:5341
+      - CarvedRockApiUrl=http://carvedrockapi:5202
     depends_on:
       - seq_in_dc
     volumes:

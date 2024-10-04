@@ -43,9 +43,46 @@
             "netCore": {
                 "appProject": "${workspaceFolder}/CarvedRock.Api/CarvedRock.Api.csproj"
             },
-            "dockerServerReadyAction": {                
+            "dockerServerReadyAction": {
                 "uriFormat": "%s://localhost:%s/swagger"
-            }   
+            }
+        },
+        {
+            "name": ".NET Core Launch CarvedRock",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "build-carvedrock-app",
+            "program": "${workspaceFolder}/CarvedRock.App/bin/Debug/net6.0/CarvedRock.App.dll",
+            "args": [],
+            "cwd": "${workspaceFolder}/CarvedRock.App",
+            "stopAtEntry": false,
+            "serverReadyAction": {
+                "action": "openExternally",
+                "pattern": "\\\\bNow listening on:\\\\s+(https?://\\\\S+)"
+            },
+            "launchBrowser": {
+                "enabled": true,
+                "args": "${auto-detect-url}/swagger",
+                "windows": {
+                    "command": "cmd.exe",
+                    "args": "/C start ${auto-detect-url}/swagger"
+                }
+            },
+            "env": {
+                "ASPNETCORE_ENVIRONMENT": "Development"
+            }
+        },
+        {
+            "name": "Docker .NET Core Launch CarvedRock",
+            "type": "docker",
+            "request": "launch",
+            "preLaunchTask": "docker-run-carvedrock-app: debug",
+            "netCore": {
+                "appProject": "${workspaceFolder}/CarvedRock.App/CarvedRock.App.csproj"
+            },
+            "dockerServerReadyAction": {
+                "uriFormat": "%s://localhost:%s/swagger"
+            }
         },
         {
             "name": ".NET Core Launch HelloCode",
@@ -80,9 +117,9 @@
             "netCore": {
                 "appProject": "${workspaceFolder}/HelloCode.Api/HelloCode.Api.csproj"
             },
-            "dockerServerReadyAction": {                
+            "dockerServerReadyAction": {
                 "uriFormat": "%s://localhost:%s/swagger"
-            }   
+            }
         },
         {
             "name": ".NET Core Launch InvoiceGenerator",

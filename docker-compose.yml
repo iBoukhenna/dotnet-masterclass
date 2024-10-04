@@ -15,6 +15,18 @@ services:
     depends_on:
       - seq_in_dc
 
+  carvedrockapp:
+    build:
+      context: .
+      dockerfile: CarvedRock.App/Dockerfile
+    ports:
+      - "8081:5298"
+    environment:
+      - SeqUrl=http://seq_in_dc:5341
+      - CarvedRockApiUrl=http://carvedrockapi:5202
+    depends_on:
+      - seq_in_dc
+
   seq_in_dc:
     image: datalust/seq
     ports:

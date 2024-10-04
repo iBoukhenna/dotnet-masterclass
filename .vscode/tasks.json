@@ -98,6 +98,103 @@
             "netCore": {
                 "appProject": "${workspaceFolder}/CarvedRock.Api/CarvedRock.Api.csproj"
             }
+        },{
+            "label": "build-carvedrock-app",
+            "command": "dotnet",
+            "type": "process",
+            "args": [
+                "build",
+                "${workspaceFolder}/CarvedRock.App/CarvedRock.App.csproj",
+                "/property:GenerateFullPaths=true",
+                "/consoleloggerparameters:NoSummary"
+            ],
+            "problemMatcher": "$msCompile"
+        },
+        {
+            "label": "publish-carvedrock-app",
+            "command": "dotnet",
+            "type": "process",
+            "args": [
+                "publish",
+                "${workspaceFolder}/CarvedRock.App/CarvedRock.App.csproj",
+                "/property:GenerateFullPaths=true",
+                "/consoleloggerparameters:NoSummary"
+            ],
+            "problemMatcher": "$msCompile"
+        },
+        {
+            "label": "watch-carvedrock-app",
+            "command": "dotnet",
+            "type": "process",
+            "args": [
+                "watch",
+                "run",
+                "${workspaceFolder}/CarvedRock.App/CarvedRock.App.csproj",
+                "/property:GenerateFullPaths=true",
+                "/consoleloggerparameters:NoSummary"
+            ],
+            "problemMatcher": "$msCompile"
+        },
+        {
+            "type": "docker-build",
+            "label": "docker-build-carvedrock-app: debug",
+            "dependsOn": [
+                "build-carvedrock-app"
+            ],
+            "dockerBuild": {
+                "tag": "carvedrockdocker:dev",
+                "target": "base",
+                "dockerfile": "${workspaceFolder}/CarvedRock.App/Dockerfile",
+                "context": "${workspaceFolder}",
+                "pull": true
+            },
+            "netCore": {
+                "appProject": "${workspaceFolder}/CarvedRock.App/CarvedRock.App.csproj"
+            }
+        },
+        {
+            "type": "docker-build",
+            "label": "docker-build-carvedrock-app: release",
+            "dependsOn": [
+                "build-carvedrock-app"
+            ],
+            "dockerBuild": {
+                "tag": "carvedrockdocker:latest",
+                "dockerfile": "${workspaceFolder}/CarvedRock.App/Dockerfile",
+                "context": "${workspaceFolder}",
+                "pull": true
+            },
+            "netCore": {
+                "appProject": "${workspaceFolder}/CarvedRock.App/CarvedRock.App.csproj"
+            }
+        },
+        {
+            "type": "docker-run",
+            "label": "docker-run-carvedrock-app: debug",
+            "dependsOn": [
+                "docker-build-carvedrock-app: debug"
+            ],
+            "dockerRun": {
+                "env": {
+                    "ASPNETCORE_ENVIRONMENT": "Development"
+                }
+            },
+            "netCore": {
+                "appProject": "${workspaceFolder}/CarvedRock.App/CarvedRock.App.csproj",
+                "enableDebugging": true,
+                "configureSsl": false
+            }
+        },
+        {
+            "type": "docker-run",
+            "label": "docker-run-carvedrock-app: release",
+            "dependsOn": [
+                "docker-build-carvedrock-app: release"
+            ],
+            "dockerRun": {},
+            "netCore": {
+                "appProject": "${workspaceFolder}/CarvedRock.App/CarvedRock.App.csproj"
+            }
         },
         {
             "label": "build-hellocode-api",
