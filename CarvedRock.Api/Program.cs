@@ -2,6 +2,7 @@ using CarvedRock.Api;
 using CarvedRock.Api.Domain;
 using CarvedRock.Api.Interfaces;
 using CarvedRock.Api.Middleware;
+using CarvedRock.Api.Integrations;
 using Serilog;
 using Serilog.Events;
 
@@ -42,6 +43,7 @@ builder.Services.AddControllers();
 // Register Logic with its implementation
 builder.Services.AddScoped<IProductLogic, ProductLogic>();
 builder.Services.AddScoped<IQuickOrderLogic, QuickOrderLogic>();
+builder.Services.AddSingleton<IOrderProcessingNotification, OrderProcessingNotification>();
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();

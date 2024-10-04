@@ -15,8 +15,10 @@ services:
       - ASPNETCORE_ENVIRONMENT=Development
       - SimpleProperty=hello-from-compose
       - SeqUrl=http://seq_in_dc:5341
+      - RabbitMqHost=rabbit_in_dc
     depends_on:
       - seq_in_dc
+      - rabbit_in_dc
     volumes:
       - ~/.vsdbg:/remote_debugger:rw
 
@@ -36,6 +38,21 @@ services:
     volumes:
       - ~/.vsdbg:/remote_debugger:rw
 
+  carvedrockorederprocessor:
+    build:
+      context: .
+      dockerfile: CarvedRock.OrderProcessor/Dockerfile
+      args:
+        - configuration=Debug
+    environment:
+      - SeqUrl=http://seq_in_dc:5341
+      - RabbitMqHost=rabbit_in_dc
+    depends_on:
+      - seq_in_dc
+      - rabbit_in_dc
+    volumes:
+      - ~/.vsdbg:/remote_debugger:rw
+      
   seq_in_dc:
     image: datalust/seq
     ports:
@@ -43,3 +60,7 @@ services:
     environment:
       - ACCEPT_EULA=Y
 
+  rabbit_in_dc:
+    image: rabbitmq:3-management
+    ports:
+      - 8088:15672
