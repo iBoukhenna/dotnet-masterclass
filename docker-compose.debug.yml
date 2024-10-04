@@ -1,0 +1,28 @@
+# Please refer https://aka.ms/HTTPSinContainer on how to setup an https developer certificate for your ASP.NET Core service.
+
+version: '3.4'
+
+services:
+  carvedrockapi:
+    build:
+      context: .
+      dockerfile: CarvedRock.Api/Dockerfile
+      args:
+        - configuration=Debug
+    ports:
+      - "8080:5202"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - SimpleProperty="hello-from-compose"
+    depends_on:
+      - seq_in_dc
+    volumes:
+      - ~/.vsdbg:/remote_debugger:rw
+
+  seq_in_dc:
+    image: datalust/seq
+    ports:
+      - "8005:80"
+    environment:
+      - ACCEPT_EULA=Y
+

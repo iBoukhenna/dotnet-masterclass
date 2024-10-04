@@ -10,6 +10,7 @@ var builder = WebApplication.CreateBuilder(args);
 // Retrieve values from appsettings.json
 var connectionString = builder.Configuration.GetConnectionString("Db");
 var simpleProperty = builder.Configuration["SimpleProperty"];
+var seqUrl = builder.Configuration["SeqUrl"];
 var nestedProp = builder.Configuration["Inventory:NestedProperty"];
 
 var name = typeof(Program).Assembly.GetName().Name;
@@ -20,10 +21,7 @@ Log.Logger = new LoggerConfiguration()
     .Enrich.FromLogContext()
     .Enrich.WithMachineName()
     .Enrich.WithProperty("Assembly", name)
-//    .Enrich.WithProperty("ConnectionString", connectionString)
-//    .Enrich.WithProperty("SimpleProperty", simpleProperty)
-//    .Enrich.WithProperty("Inventory:NestedProperty", nestedProp)
-    .WriteTo.Seq(serverUrl: "http://host.docker.internal:5341")
+    .WriteTo.Seq(serverUrl: seqUrl)
     .WriteTo.Console()
     .CreateLogger();
 
