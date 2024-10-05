@@ -3,27 +3,27 @@ namespace carvedrock.bl.Conventions.NamingConventions.StaticInternal
 {
     public class Product
     {
-        private static int ReviewsQueue;
+        private static int s_reviewsQueue;
 
         [ThreadStatic]
-        private static TimeSpan TimeSpan;
+        private static TimeSpan t_timeSpan;
 
         public Product()
         {
-            ReviewsQueue = 0;
-            TimeSpan = TimeSpan.Zero;
+            s_reviewsQueue = 0;
+            t_timeSpan = TimeSpan.Zero;
         }
 
         public static void Update()
         {
-            ReviewsQueue--;
-            TimeSpan = new TimeSpan(1, 2, 3);
+            s_reviewsQueue--;
+            t_timeSpan = new TimeSpan(1, 2, 3);
         }
 
         public static void Log()
         {
-            var reviews = ReviewsQueue;
-            var timespan = TimeSpan.ToString();
+            var reviews = s_reviewsQueue;
+            var timespan = t_timeSpan.ToString();
             Console.WriteLine($"{reviews}, {timespan}");
         }
     }

@@ -1,11 +1,12 @@
 ﻿
 namespace carvedrock.bl.Conventions.NamingConventions.Classes
 {
-    public class backpack
+    public class Backpack
     {
-        public string name { get; } = null!;
-        public double price { get; set; }
-        public int capacity { get; }
-        public double weight { get; }
+        public string Name { get; } = null!;
+        public double Price { get; set; }
+        public int Capacity { get; }
+        public double Weight { get; }
+        public bool IsWaterproof { get; }
     }
 }

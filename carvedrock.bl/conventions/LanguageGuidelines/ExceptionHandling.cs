@@ -11,35 +11,19 @@ namespace carvedrock.bl.Conventions.LanguageGuidelines
 
         public void Dispose()
         {
+            KindOfWork = null;
             Console.WriteLine("Closing Connections");
             Console.WriteLine("Cleaning Variables");
         }
     }
 
-
     public class ExceptionHandling
     {
-
         public ExceptionHandling()
         {
-            HardWork buildFence = new();
-            try
-            {
-                buildFence.DoSomeWork();
-            }
-            catch (Exception e)
-            {
-                ;   // NEVER DO THIS!
-            }
-            finally
-            {
-                if (buildFence != null)
-                {
-                    buildFence.Dispose();
-                }
-            }
+            using HardWork buildFence = new() { KindOfWork = "building a fence"};
+            buildFence.DoSomeWork();
         }
-
     }
 
 }

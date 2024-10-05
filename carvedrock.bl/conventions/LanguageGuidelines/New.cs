@@ -1,6 +1,6 @@
 namespace carvedrock.bl.Conventions.LanguageGuidelines
 {
-    class ClimbingShoes 
+    class ClimbingShoes
     {
         public int Id { get; set; }
         public string Name { get; set; } = null!;
@@ -13,16 +13,22 @@ namespace carvedrock.bl.Conventions.LanguageGuidelines
     {
         public New()
         {
-            ClimbingShoes climbingShoes = new ClimbingShoes();
-            climbingShoes.Name = "Hiking Shoes 3000";
-            climbingShoes.Color = new List<string> { "Black", "Blue", "Gray" };
-            climbingShoes.Size = new List<double> { 4.5, 5.0, 6.0, 6.5 };
+            var climbingShoes = new ClimbingShoes()
+            {
+                Id = 2045,
+                Name = "Hiking Shoes 3000",
+                Color = new List<string> { "Black", "Blue", "Gray" },
+                Size = new List<double> { 4.5, 5.0, 6.0, 6.5 }
+            };
 
-            ClimbingShoes climbingShoes1 = new();
-            climbingShoes.Name = "Hiking/Running Shoes";
-            climbingShoes.Color = new List<string> { "White", "Red", "Green" };
-            climbingShoes.Size = new List<double> { 5.0, 5.5, 6.0 };
+            ClimbingShoes climbingShoes1 = new() 
+            {
+                Id = 4582,
+                Name = "Hiking/Running Shoes",
+                Color = new List<string> { "White", "Red", "Green" },
+                Size = new List<double> { 5.0, 5.5, 6.0 }
+            };
+
         }
-        
     }
 }

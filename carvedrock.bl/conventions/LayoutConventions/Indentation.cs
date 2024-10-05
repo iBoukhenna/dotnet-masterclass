@@ -11,9 +11,9 @@ namespace carvedrock.bl.Conventions.LayoutConventions
 		public double PriceWithDiscount(double price)
 		{
 			if ((price > 100) && (price < 400))
-		{
-		price -= price * 0.30;
-		}
+			{ // 1 tab
+				price -= price * 0.30; // 2 tabs
+			} // 1 tab
 			else if (price >= 400)
 			{
 				price -= price * 0.60;

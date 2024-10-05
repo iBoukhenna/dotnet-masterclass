@@ -6,12 +6,19 @@ using System.Threading.Tasks;
 
 namespace carvedrock.bl.Conventions.LayoutConventions
 {
-    public class BackPack //CompleteDemo
+    public class BackPack //Complete demo
 	{
-		private List<string> _sizes = new List<string>() { "S", "L", "XL" }; private List<string> _colors = new List<string>() { "Green", "Blue", "Black" };
-
-		public string Name { get; } = null!; public double Price { get; set; } public int Capacity { get; } public double Weight { get; } public bool IsWaterproof { get; }
-		
+		// Correct indentation
+		// Separate declarations
+		private List<string> _sizes = new() { "S", "L", "XL" };
+		private List<string> _colors = new() { "Green", "Blue", "Black" };
+		// Separate statements (properties)
+		public string Name { get; } = null!;
+		public double Price { get; set; }
+		public int Capacity { get; }
+		public double Weight { get; }
+		public bool IsWaterproof { get; }
+		// Blank line added here!
 		public BackPack(string name, double price, int capacity, double weight, bool isWaterproof)
 		{
 			Name = name;
@@ -24,12 +31,10 @@ namespace carvedrock.bl.Conventions.LayoutConventions
 		{
 			var sizes = string.Join(',', _sizes);
 			var colors = string.Join(',', _colors);
-			return @$"Backpack (
-				Name={Name}, 
-				Price={Price:C}, 
-				Capacity:{Capacity}, 
-				Sizes:{sizes}, 
-				Colors:{colors})";
+			return $"Backpack (Name={Name}, Price={Price:C}, Capacity:{Capacity}, Sizes:{sizes}, Colors:{colors})";
 		}
+		// Check the correct use of parentheses in
+		// conventions\LayoutConventions\DemoLayout\DemoLayout.cs
+		// -> PriceWithDiscount.
 	}
 }

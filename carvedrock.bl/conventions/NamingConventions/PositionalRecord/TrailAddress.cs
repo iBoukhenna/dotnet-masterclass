@@ -1,5 +1,5 @@
 ﻿
 namespace carvedrock.bl.Conventions.NamingConventions.PositionalRecord
 {
-    public record TrailAddress(string city, string state, string zipCode);
+    public record TrailAddress(string City, string State, string ZipCode);
 }

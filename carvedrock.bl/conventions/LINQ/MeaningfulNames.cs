@@ -12,9 +12,9 @@ namespace carvedrock.bl.Conventions.LINQ
         public List<Product> products = new();
         public MeaningfulNames()
         {
-            var query = from x in products
-                                   where x.Sport == "Climbing"
-                                   select x;
+            var climbingProducts = from product in products
+                                   where product.Sport == "Climbing"
+                                   select product;
         }
     }
 }

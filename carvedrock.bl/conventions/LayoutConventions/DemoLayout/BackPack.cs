@@ -8,19 +8,13 @@ namespace carvedrock.bl.Conventions.LayoutConventions.DemoLayout
 {
 	public class BackPack
 	{
-		private List<string> _sizes = new List<string>() { "S", "L", "XL" };
-	  private List<string> _colors = new List<string>() { "Green", "Blue", "Black" };
-		public string Name { 
-			get; 
-		} = null!;
-        public double Price
-        {
-			get;
-			set;
-		}
-	   public int Capacity { get; }
-	 public double Weight { get; }
-	  public bool IsWaterproof { get; }
+		private readonly List<string> _sizes = new() { "S", "L", "XL" };
+		private readonly List<string> _colors = new() { "Green", "Blue", "Black" };
+		public string Name { get; } = null!;
+		public double Price { get; set; }
+		public int Capacity { get; }
+		public double Weight { get; }
+		public bool IsWaterproof { get; }
 
 		public BackPack(string name, double price, int capacity, double weight, bool isWaterproof)
 		{
@@ -30,7 +24,6 @@ namespace carvedrock.bl.Conventions.LayoutConventions.DemoLayout
 			Weight = weight;
 			IsWaterproof = isWaterproof;
 		}
-
 		public string Details()
 		{
 			var sizes = string.Join(',', _sizes);

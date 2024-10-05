@@ -9,10 +9,10 @@ namespace carvedrock.bl.Conventions.LanguageGuidelines
             Stopwatch stopwatch = new Stopwatch();
             stopwatch.Start();
 
-            string manySymbols = "";
+            System.Text.StringBuilder stringBuilder = new();
             for (var i = 0; i < 1000; i++)
             {
-                manySymbols += i.ToString() + ", ";
+                stringBuilder.Append($"{i},");
             }
 
             stopwatch.Stop();

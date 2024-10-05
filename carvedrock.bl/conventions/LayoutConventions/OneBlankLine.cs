@@ -3,21 +3,21 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+// Blank line needs to be added here.
 namespace carvedrock.bl.Conventions.LayoutConventions
 {
-	public class OneBlankLine
-	{
+    public class OneBlankLine
+    {
 		private readonly List<string> _sizes = new() { "S", "L", "XL" };
 		private readonly List<string> _colors = new() { "Green", "Blue", "Black" };
-
-		public string Name { get; } = null!;
-
-		public double Price { get; set; }
-
 		private int _capacity;
-		public int Capacity { get { return _capacity; } set { _capacity = value; } }
+		public string Name { get; } = null!;
+		public double Price { get; set; }
 		public double Weight { get; }
 		public bool IsWaterproof { get; }
+		// Blank line needs to be added here.
+		public int Capacity { get { return _capacity; } set { _capacity = value; } }
+		// Blank line needs to be added here.
 		public OneBlankLine(string name, double price, int capacity, double weight, bool isWaterproof)
 		{
 			Name = name;

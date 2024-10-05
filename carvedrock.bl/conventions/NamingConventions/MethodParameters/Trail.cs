@@ -5,13 +5,13 @@ namespace carvedrock.bl.Conventions.NamingConventions.MethodParameters
     {
         public int TrailNumber { get; set; }
 
-        public void SaveTrail(int TrailNumber, bool IsRegistered)
+        public void SaveTrail(int trailNumber, bool isRegistered)
         {
             // Saved trail
-            if (IsRegistered)
-                this.TrailNumber = TrailNumber;
+            if (isRegistered)
+                TrailNumber = trailNumber;
 
-            Console.WriteLine(TrailNumber);
+            Console.WriteLine(trailNumber);
         }
     }
 }

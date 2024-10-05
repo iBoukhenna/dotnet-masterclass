@@ -35,7 +35,7 @@ namespace carvedrock.bl.Conventions.LINQ
             var communityTrails =
                 from user in _users
                 join trail in _trails on user.City equals trail.City
-                select new { Id1 = user.Id, Id2 = trail.Id };
+                select new { UserId = user.Id, TrailId = trail.Id };
         }
     }
 }

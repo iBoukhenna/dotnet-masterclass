@@ -12,7 +12,7 @@ namespace carvedrock.bl.Conventions.LanguageGuidelines
         public AndOr()
         {
             var Price = 29;
-            if ((Price % 7 == 0) & SecondOperand())
+            if ((Price % 7 == 0) && SecondOperand())
             {
                 Price += 3;
             }

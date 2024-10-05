@@ -15,9 +15,9 @@ namespace carvedrock.bl.Conventions.LINQ
             var scoreItems =
                 from order in Orders
                 from item in order.Items!
-                orderby item descending
                 where item > 100
-                select new { order.CustomerId, item };
+                orderby item descending
+                select new { CustomerId = order.CustomerId, Expensiveitem = item };
         }
     }
 }

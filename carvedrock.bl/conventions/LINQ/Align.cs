@@ -12,12 +12,15 @@ namespace carvedrock.bl.Conventions.LINQ
         public List<Product> Products { get; set; } = new();
         public Align()
         {
-            var seasonProducts = from product in Products where product.Season == "Winter" select product.Name;
+            var seasonProducts = from product in Products
+                                 where product.Season == "Winter"
+                                 select product.Name;
 
             // or
-
-            var sportProducts = from product in Products
-                where product.Sport == "Hiking" select product.Name;
+            var sportProducts =
+                from product in Products
+                where product.Sport == "Hiking"
+                select product.Name;
         }
     }
 }

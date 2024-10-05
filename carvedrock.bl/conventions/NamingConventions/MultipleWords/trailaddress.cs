@@ -1,5 +1,5 @@
 ﻿
 namespace carvedrock.bl.Conventions.NamingConventions.MultipleWords
 {
-    public record trailaddress (string City, string state, string zipcode);
+    public record TrailAddress (string City, string State, string ZipCode);
 }

@@ -1,28 +1,23 @@
 namespace carvedrock.bl.Conventions.LanguageGuidelines
 {
-    static class Sports
-    {
-        public static int Count() { return 24; }
-    }
-
     public class ImplicitlyTypedVariable
     {
         public ImplicitlyTypedVariable()
         {
-            var var1 = Convert.ToInt32(Console.ReadLine());
-            var var2 = Sports.Count();
+            var var1 = "This is clearly a string";
+            var var2 = 24;
 
-            var productName = Console.ReadLine();
+            string? productName = Console.ReadLine();
 
-            foreach (var x in productName!)
+            foreach (char letter in productName!)
             {
-                if (x == 'h')
+                if (letter == 'h')
                     Console.Write("H");
                 else
-                    Console.Write(x);
+                    Console.Write(letter);
             }
 
-            for (int i=0; i<10; i++)
+            for (var i = 0; i < 10; i++)
             {
                 Console.WriteLine("{0}: {1}, {2}", i, var1, var2);
             }

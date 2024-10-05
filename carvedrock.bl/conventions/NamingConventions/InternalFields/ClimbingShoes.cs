@@ -3,22 +3,19 @@ namespace carvedrock.bl.Conventions.NamingConventions.InternalFields
 {
     public class ClimbingShoes
     {
-        public int name;
-
-        private readonly int UniqueIdentifier;
+        private readonly int _uniqueIdentifier;
 
         public ClimbingShoes()
         {
-            UniqueIdentifier = 0;
+            _uniqueIdentifier = 0;
 
-            var Variable_Inside_Constructor = "";
-
-            Console.WriteLine(Variable_Inside_Constructor);
+            var variableInsideConstructor = "";
+            Console.WriteLine(variableInsideConstructor);
         }
 
         public override string ToString()
         {
-            return $"{this.GetType().Name} (UniqueId={UniqueIdentifier})";
+            return $"{this.GetType().Name} (UniqueId={_uniqueIdentifier})";
         }
     }
 }

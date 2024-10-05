@@ -15,7 +15,7 @@ Naming conventions define the way you write the name of a variable, type, functi
 - **Example**: `CustomerRecord`, `CalculateTotal()`, `IService`.
 
 ### camelCase
-- **Used for**: Private and Internal fields, static variables (prefixed with `s_`), thread variables (prefixed with `t_`), Method parameters.
+- **Used for**: Private and Internal fields, static variables (prefixed with `s_`), thread variables (prefixed with `t_`), and Method parameters.
 - **Example**: `customerName`, `s_totalAmount`, `t_threadId`.
 
 ### lowercase

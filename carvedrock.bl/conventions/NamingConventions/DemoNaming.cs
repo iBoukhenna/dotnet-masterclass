@@ -2,51 +2,54 @@ namespace carvedrock.bl.Conventions.NamingConventions
 {
     public class NamingConventions
     {
+
         // Class
          public class ClimbingShoes 
 	    {
             // PascalCase
             // Public members
-            public string name { get; } = null!;
-            public double price { get; set; }
-            public event Action eventCheckInventory = null!;
+            public string Name { get; } = null!;
+            public double Price { get; set; }
+            public event Action EventCheckInventory = null!;
 
             // Multiple words
-            public string countryoforigin = null!;
+            public string CountryOfOrigin = null!;
 
             // Positional record
-            public record TrailAddress(string city, string state, string zipCode);
+            public record TrailAddress(string City, string State, string ZipCode);
             
 
             // camelCase
             // Internal fields
-            private int UniqueIdentifier;
+            private int _uniqueIdentifier;
 
             // Static internal fields
-            private static int ReviewsQueue;
+            private static int s_reviewsQueue;
 
             [ThreadStatic]
-            private static TimeSpan TimeSpan;
+            private static TimeSpan t_timeSpan;
 
         }
 
 
         // Interfaces
-        public interface Product
+        public interface IProduct
         {
-            void priceWithDiscount();
+            void PriceWithDiscount();
         }
 
 
         // Method parameters
-        public void SaveTrail(int TrailNumber, bool IsRegistered)
+        public void SaveTrail(int trailNumber, bool isRegistered)
         {
             // Saved trail
         }
 
 
-        // Additional Naming Conventions
-        ClimbingShoes reallyLongVariableName = new carvedrock.bl.Conventions. NamingConventions.NamingConventions.ClimbingShoes();
+        // Additional naming conventions
+        ClimbingShoes reallyLongVariableName = new carvedrock.bl.Conventions.
+            NamingConventions.NamingConventions.ClimbingShoes();
+
 
     }
 }

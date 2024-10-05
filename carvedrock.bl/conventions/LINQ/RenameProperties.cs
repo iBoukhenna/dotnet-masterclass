@@ -16,7 +16,7 @@ namespace carvedrock.bl.Conventions.LINQ
             var userOrders =
                 from customer in Customers
                 join order in Orders on customer.Id equals order.CustomerId
-                select new { customer.Name, order.Id };
+                select new { CustomerName = customer.Name, OrderID = order.Id };
         }
     }
 }

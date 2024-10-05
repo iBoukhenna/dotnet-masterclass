@@ -6,7 +6,7 @@ namespace carvedrock.bl.Conventions.LanguageGuidelines
         {
             var firstName = "Xavier";
             var lastName = "Morera";
-            string displayName = firstName + " " + lastName;
+            string displayName = $"{firstName} {lastName}";
             Console.WriteLine(displayName);
         }
     }
