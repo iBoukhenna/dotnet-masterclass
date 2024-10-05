@@ -6,9 +6,8 @@ using System.Threading.Tasks;
 
 namespace carvedrock.bl.principles.Solid.InterfaceSegregation
 {
-    public interface ICoffeeMachine
+    public interface IExpressoMachine : ICoffeeMachine
     {
-        public void AddCoffee();
-        public void AddWater();
+        public void GetExpressoCoffee();
     }
 }

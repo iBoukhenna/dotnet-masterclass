@@ -4,11 +4,12 @@
     {
         public FCOI()
         {
-            Employee employee = new();
-            employee.title = "Architect";
-            employee.name = "John Doe";
-            employee.age = 35;
-            employee.salary = 1500;
+            string title = "Architect";
+            string name = "John Doe";
+            int age = 35;
+            Person person = new(title, name, age);
+            int salary = 1500;
+            Employee employee = new(person, salary);
         }
     }
 }

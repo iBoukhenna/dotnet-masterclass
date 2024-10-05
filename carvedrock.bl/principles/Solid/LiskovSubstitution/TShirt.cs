@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace carvedrock.bl.principles.Solid.LiskovSubstitution
 {
-    public class TShirt
+    public class TShirt : Product
     {
         private readonly string _name;
         private readonly double _price;
@@ -21,21 +21,20 @@ namespace carvedrock.bl.principles.Solid.LiskovSubstitution
             _sizes = sizes;
         }
 
-        public string GetName()
+        public override string GetName()
         {
             return _name;
         }
 
-        public double GetPrice()
+        public override double GetPrice()
         {
             return _price;
         }
 
-        public string GetDescription()
+        public override string GetDescription()
         {
             string thisName = this.GetType().Name;
-            return $"{thisName}: Name: {_name}, Price: {_price}, Fabric: {_fabric}, Sizes: {string.Join(',',_sizes)}";
+            return $"{thisName}: Name: {_name}, Price: {_price}, Fabric: {_fabric}, Sizes: {string.Join(',', _sizes)}";
         }
-        
     }
 }

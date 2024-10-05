@@ -1,7 +1,14 @@
-﻿namespace carvedrock.bl.principles.FCOI
+﻿﻿namespace carvedrock.bl.principles.FCOI
 {
-    public class Employee : Person
+    class Employee
     {
-        public int salary;
+        public int Salary { get; set; }
+        public Person Person { get; set; }
+
+        public Employee(Person person, int salary)
+        {
+            Salary = salary;
+            Person = person;
+        }
     }
 }

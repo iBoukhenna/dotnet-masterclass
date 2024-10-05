@@ -4,17 +4,15 @@
     {
         public InterfaceSegregation()
         {
-
             ColdBrewCoffeeMaker ColdCoffeeMachine = new();
             MokaEspressoMaker MokaExpressoMachine = new();
 
 
             ColdCoffeeMachine.GetColdCoffee();
-            ColdCoffeeMachine.GetExpressoCoffee(); // This fails
+            //ColdCoffeeMachine.GetExpressoCoffee(); // Now it is not allowed
 
             MokaExpressoMachine.GetExpressoCoffee();
-            MokaExpressoMachine.GetColdCoffee(); // This fails
-
+            //MokaExpressoMachine.GetColdCoffee(); // Now it is not allowed
         }
     }
 }

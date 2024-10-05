@@ -6,25 +6,19 @@ using System.Threading.Tasks;
 
 namespace carvedrock.bl.principles.Solid.DependencyInversion
 {
-    public class SqlServerDatabase : IDatabase
+    public class CassandraDatabase : IDatabase
     {
-        // Some fields
         public void Connect()
         {
             // Do some work
         }
 
-        public void Insert()
-        {
-            // Do some work
-        }
-
-        public void Update(int id)
-        {
-            // Do some work
-        }
-
         public void Delete()
+        {
+            // Do some work
+        }
+
+        public void Insert()
         {
             // Do some work
         }
@@ -39,6 +33,11 @@ namespace carvedrock.bl.principles.Solid.DependencyInversion
         {
             // Do some work
             return null;
+        }
+
+        public void Update(int id)
+        {
+            // Do some work
         }
     }
 }

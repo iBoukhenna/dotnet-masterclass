@@ -6,14 +6,14 @@ using System.Threading.Tasks;
 
 namespace carvedrock.bl.principles.Solid.InterfaceSegregation
 {
-    public class ColdBrewCoffeeMaker : ICoffeeMachine
+    public class ColdBrewCoffeeMaker : IColdCoffeeMachine
     {
         private int _coffeeBeans; 
         private int _water;
 
         public void AddCoffee()
         {
-            // Add 1 pound of Costa Rican coffee
+            // Add 1 pound of Costa Rican Coffee
             _coffeeBeans += 1;
         }
 
@@ -26,11 +26,6 @@ namespace carvedrock.bl.principles.Solid.InterfaceSegregation
         public void GetColdCoffee()
         {
             Console.WriteLine("Making Cold Brew");
-        }
-
-        public void GetExpressoCoffee()
-        {
-            throw new NotImplementedException();
         }
     }
 }

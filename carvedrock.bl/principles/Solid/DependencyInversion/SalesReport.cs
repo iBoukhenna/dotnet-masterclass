@@ -8,9 +8,9 @@ namespace carvedrock.bl.principles.Solid.DependencyInversion
 {
     public class SalesReport
     {
-        private SqlServerDatabase _database;
+        private IDatabase _database;
 
-        public SalesReport(SqlServerDatabase database)
+        public SalesReport(IDatabase database)
         {
             _database = database;
         }

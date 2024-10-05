@@ -5,12 +5,23 @@ namespace carvedrock.bl.principles.Solid.DependencyInversion
 	{
 		public DependencyInversion()
 		{
-			SqlServerDatabase db = new();
+			// SqlServer
 
-			SalesReport monthlyReport = new(db);
+			SqlServerDatabase sqlServer = new();
 
-			monthlyReport.CreateReport(DateTime.Now.AddMonths(-1), DateTime.Now);
-			monthlyReport.SaveReport();
+			SalesReport sqlServerMonthlyReport = new(sqlServer);
+
+			sqlServerMonthlyReport.CreateReport(DateTime.Now.AddMonths(-1), DateTime.Now);
+			sqlServerMonthlyReport.SaveReport();
+
+			// Cassandra (Can also be a search engine)
+
+			CassandraDatabase cassandra = new();
+
+			SalesReport cassandraMonthlyReport = new(cassandra);
+
+			cassandraMonthlyReport.CreateReport(DateTime.Now.AddMonths(-1), DateTime.Now);
+			cassandraMonthlyReport.SaveReport();
 		}
 	}
 }
