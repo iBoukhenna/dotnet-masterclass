@@ -1,4 +1,4 @@
-namespace carvedrock.bl.CleanClassesAndMethods.MethodsAndFunctions.ClearerCodeIntent
+namespace carvedrock.bl.cleanclassesandmethods.MethodsAndFunctions.ClearerCodeIntent
 {
     public class Order
     {
@@ -8,50 +8,12 @@ namespace carvedrock.bl.CleanClassesAndMethods.MethodsAndFunctions.ClearerCodeIn
         public int CustomerId { get; set; }
 
 
-        public decimal total_pricesOfwinter_products(List<Product> l)
+        public decimal TotalPriceOfSeasons(List<Product> listOfProducts, string seasonCategory)
         {
-            decimal r = 0;
-            for (var i = 0; i < l.Count; i++)
-            {
-                if (l[i].Season.Equals("Winter"))
-                {
-                    decimal temp = l[i].Price;
-                    r = r + temp;
-                }
-            }
-            return r;
+            return listOfProducts.Where(product => product.Season.Equals(seasonCategory)).Sum(product => product.Price);
+            
         }
 
-
-        public decimal total_pricesOfsummer_products(List<Product> l)
-        {
-            decimal r = 0;
-            for (var i = 0; i < l.Count; i++)
-            {
-                if (l[i].Season.Equals("Summer"))
-                {
-                    decimal temp = l[i].Price;
-                    r = r + temp;
-                }
-            }
-            return r;
-        }
-
-
-        public decimal total_pricesOfspring_products(List<Product> l)
-        {
-            decimal r = 0;
-            for (var i = 0; i < l.Count; i++)
-            {
-
-                if (l[i].Season.Equals("Spring "))
-                {
-                    decimal temp = l[i].Price;
-                    r = r + temp;
-                }
-            }
-            return r;
-        }
 
     }
 

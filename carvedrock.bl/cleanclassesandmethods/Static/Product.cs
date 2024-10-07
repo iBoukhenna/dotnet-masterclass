@@ -1,7 +1,7 @@
 ﻿
 namespace carvedrock.bl.cleanclassesandmethods.Static
 {
-    public static class CheckoutFunctions
+    public class Product
     {
         public static decimal CalculateTax(decimal total, string twoLetterStateCode)
         {

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace carvedrock.bl.CleanClassesAndMethods.Static
+namespace carvedrock.bl.cleanclassesandmethods.Static
 {
     public class BankAccount
     {
@@ -12,13 +12,6 @@ namespace carvedrock.bl.CleanClassesAndMethods.Static
 
         public decimal Balance; // Instance member
 
-        public decimal InterestRate; // Shared member
-
-        public void GetPrice(decimal price, string twoLetterStateCode)
-        {
-            /// Multiple calculations made
-            decimal tax = CheckoutFunctions.CalculateTax(price, twoLetterStateCode);
-            /// A set of additional calculations 
-        }
+        public static decimal InterestRate; // Shared member
     }
 }

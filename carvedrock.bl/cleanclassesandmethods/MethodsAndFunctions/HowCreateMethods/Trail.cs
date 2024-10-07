@@ -1,4 +1,4 @@
-namespace carvedrock.bl.CleanClassesAndMethods.MethodsAndFunctions.HowCreateMethods
+namespace carvedrock.bl.cleanclassesandmethods.MethodsAndFunctions.HowCreateMethods
 {
     public class Trail
     {
@@ -50,57 +50,28 @@ namespace carvedrock.bl.CleanClassesAndMethods.MethodsAndFunctions.HowCreateMeth
             this.Extras = Extras;
         }
 
-   
-        public bool AddExtraordinaryTrial(decimal length, int elevation, int trailTraffic, int trailType, decimal latitude, decimal longitude, string cityName, string stateName, string countryName)
+
+        public void AddAmazingTrail(decimal length, int elevation, int trailTraffic, int trailType, Location location)
         {
-            if (length <= 0)
-            {
-                if (elevation < 0)
-                {
-                    if (trailTraffic < 0)
-                    {
-                        if(trailType < 0)
-                        {
-                            Location location = new()
-                            {
-                                Latitude = latitude,
-                                Longitude = longitude,
-                                CityName = cityName,
-                                StateName = stateName,
-                                CountryName = countryName
-                            };
-                            Location = location;
-                            Length = length;
-                            Elevation = elevation;
-                            TrailType = (TrailType)trailType;
+            if (length <= 0) throw new Exception("length cannot be null");
+            if (elevation < 0) throw new Exception("elevation cannot be null");
+            if (trailTraffic < 0) throw new Exception("traffic cannot be null");
+            if (trailType < 0) throw new Exception("trailType cannot be null");
 
-                            if ((Length > 20) && (Elevation > 600) && (trailType.Equals(TrailType.PointToPoint))) Difficulty = Difficulty.Challenging;
-                            if ((Length < 1000) || (Elevation < 100) && (trailTraffic.Equals(Traffic.Heavy))) Difficulty = Difficulty.Moderate;
-                            else Difficulty = Difficulty.Easy;
+            Location = location;
+            Length = length;
+            Elevation = elevation;
+            TrailType = (TrailType)trailType;
 
-                        }
-                        else
-                        {
-                            throw new Exception("trailType cannot be null");
-                        }
-                      
-                    }
-                    else
-                    {
-                        throw new Exception("traffic cannot be null");
-                    }
-                }
-                else
-                {
-                    throw new Exception("elevation cannot be null");
-                }
-            }
-            else
-            {
-                throw new Exception("length cannot be null");
-            }
+            if ((Length > 20) && (Elevation > 600) && (trailType.Equals(TrailType.PointToPoint))) Difficulty = Difficulty.Challenging;
+            if ((Length < 1000) || (Elevation < 100) && (trailTraffic.Equals(Traffic.Heavy))) Difficulty = Difficulty.Moderate;
+            else Difficulty = Difficulty.Easy;
 
- 
+        }
+
+        public bool IsExtraordinary()
+        {
+
             int totalActivities = Enum.GetNames(typeof(TrailActivity)).Length;
             int totalExtras = Enum.GetNames(typeof(TrailExtras)).Length;
 
@@ -108,9 +79,7 @@ namespace carvedrock.bl.CleanClassesAndMethods.MethodsAndFunctions.HowCreateMeth
                 return true;
             else
                 return false;
-
         }
-
     }
 }
     

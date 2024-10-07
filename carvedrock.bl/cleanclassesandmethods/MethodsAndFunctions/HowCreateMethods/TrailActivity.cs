@@ -1,4 +1,4 @@
-namespace carvedrock.bl.CleanClassesAndMethods.MethodsAndFunctions.HowCreateMethods
+namespace carvedrock.bl.cleanclassesandmethods.MethodsAndFunctions.HowCreateMethods
 {
     public struct TrailActivity
     {

@@ -1,6 +1,6 @@
 ﻿using System.Runtime.Serialization;
 
-namespace carvedrock.bl.CleanClassesAndMethods.FavoringReadability.FavorReadability
+namespace carvedrock.bl.cleanclassesandmethods.FavoringReadability.FavorReadability
 {
     [Serializable]
     internal class TrailException : Exception

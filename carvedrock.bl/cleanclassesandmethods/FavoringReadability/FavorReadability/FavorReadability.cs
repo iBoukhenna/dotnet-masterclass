@@ -1,57 +1,20 @@
 ﻿
-namespace carvedrock.bl.CleanClassesAndMethods.FavoringReadability.FavorReadability
+namespace carvedrock.bl.cleanclassesandmethods.FavoringReadability.FavorReadability
 {
     public class FavorReadability
     {
-        public string RateTrail(decimal len, decimal ele, string traffic, string type)
+        public string RateTrail(decimal length, decimal elevation, string trailTraffic, string trailType)
         {
-            if (len > 0)
-            {
-                if (ele >= 0)
-                {
-                    if (traffic != null)
-                    {
-                        if (type != null)
-                        {
-                            if (len > 20 || ele > 400)
-                            {
-                                return "hard";
-                            }
-                            else if (10 < len && len < 20 || 100 < ele && ele < 400)
-                            {
-                                if (traffic == "heavy")
-                                {
-                                    return "hard";
-                                }
-                                else
-                                {
-                                    return "moderate";
-                                }
-                            }
-                            else
-                            {
-                                return "easy";
-                            }
-                        }
-                        else
-                        {
-                            throw new TrailException("type cannot be null");
-                        }
-                    }
-                    else
-                    {
-                        throw new TrailException("traffic cannot be null");
-                    }
-                }
-                else
-                {
-                    throw new TrailException("ele cannot be null");
-                }
-            }
+            if (length < 0) throw new Exception("length cannot be null");
+            if (elevation < 0) throw new Exception("elevation cannot be null");
+            if (trailTraffic == null) throw new Exception("traffic cannot be null");
+            if (trailType == null) throw new Exception("type cannot be null");
+
+            if (length > 20 || elevation > 400) return "hard";
+            else if
+                (length > 10 || elevation > 100) return trailTraffic == "heavy" ? "hard" : "moderate";
             else
-            {
-                throw new TrailException("len cannot be null");
-            }
+                return "easy";
         }
     }
 }

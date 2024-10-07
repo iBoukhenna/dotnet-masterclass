@@ -1,4 +1,4 @@
-namespace carvedrock.bl.CleanClassesAndMethods.MethodsAndFunctions.ClearerCodeIntent
+namespace carvedrock.bl.cleanclassesandmethods.MethodsAndFunctions.ClearerCodeIntent
 {
     public class Product
     {
