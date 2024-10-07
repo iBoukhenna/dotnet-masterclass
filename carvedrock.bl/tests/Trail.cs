@@ -1,5 +1,5 @@
 ﻿
-namespace carvedrock.bl.test
+namespace carvedrock.bl.tests
 {
     public class Trail
     {
@@ -12,7 +12,9 @@ namespace carvedrock.bl.test
 
         public double EstimateTime()
         {
-            return DistanceInMiles / 3 + ElevationInFeet / 2000;
+            if (DistanceInMiles <= 0)
+                throw new Exception("Distance should be greater than 0");
+            return DistanceInMiles / 3 + Math.Abs(ElevationInFeet / 2000);
         }
     }
 }

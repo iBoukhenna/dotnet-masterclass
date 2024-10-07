@@ -4,20 +4,20 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace carvedrock.bl.test
+namespace carvedrock.bl.tests
 {
     public static class UnitConverter
     {
         public static decimal KilometersToMiles(decimal kilometers)
         {
             if (kilometers < 0) throw new ArgumentException("Kilometers should be greater than 0");
-            return kilometers * 0.621371M;
+            return Math.Round(kilometers * 0.621371M, 4);
         }
 
         public static decimal MilesToKilometers(decimal miles)
         {
             if (miles < 0) throw new ArgumentException("Miles should be greater than 0");
-            return miles * 1.60934M;
+            return Math.Round(miles * 1.60934M, 4);
         }
 
         public static decimal CelsiusToFahrenheit(decimal celsius)

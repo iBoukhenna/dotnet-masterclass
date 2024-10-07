@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace carvedrock.bl.test
+namespace carvedrock.bl.tests
 {
     public enum Difficulty
     {
