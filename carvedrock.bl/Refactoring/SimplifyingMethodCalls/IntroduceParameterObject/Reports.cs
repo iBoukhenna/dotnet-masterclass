@@ -3,19 +3,19 @@ namespace carvedrock.bl.refactoring.SimplifyinMethodCalls.IntroduceParameterObje
 {
     public class Reports
     {
-        public string Sales(DateTime from, DateTime to)
+        public string Sales(DateTimePeriod period)
         {
-            return $"Sales Report from {from:g} to {to:g}";
+            return $"Sales Report from {period.From:g} to {period.To:g}";
         }
 
-        public string Expenses(DateTime from, DateTime to)
+        public string Expenses(DateTimePeriod period)
         {
-            return $"Expenses Report from {from:g} to {to:g}";
+            return $"Expenses Report from {period.From:g} to {period.To:g}";
         }
 
-        public string ProductSales(DateTime from, DateTime to, Product product)
+        public string ProductSales(DateTimePeriod period, Product product)
         {
-            return $"Sales Report from {from:g} to {to:g} for {product.Name}";
+            return $"Sales Report from {period.From:g} to {period.To:g} for {product.Name}";
         }
     }
 }

@@ -2,28 +2,14 @@ namespace carvedrock.bl.refactoring.SimplifyinMethodCalls.SplitMergeMethods.Para
 {
     public class ParameterizeMethod
     {
-        const double WINTER_DISCOUNT_CONSTANT = 0.30;
-        const double SUMMER_DISCOUNT_CONSTANT = 0.25;
-        void ApplyWinterDiscount()
+        void ApplyDiscount(double seasonDiscount)
         {
-            Backpack backpack = new("Tor 85 Litre Rucksack", 79.99, 85, 200, true);
-            /// code...
-            double price = backpack.Price;
-            // code...
-            double total = price * WINTER_DISCOUNT_CONSTANT;
-            // code...
+        Backpack backpack = new("Tor 85 Litre Rucksack", 79.99, 85, 200, true);
+        /// code...
+        double price = backpack.Price;
+        // code... 
+        double total = price * seasonDiscount;
+        // code...
         }
-
-        void ApplySummerDiscount()
-        {
-            Backpack backpack = new("Tor 85 Litre Rucksack", 79.99, 85, 200, true);
-            // code...
-            double price = backpack.Price;
-            // code... 
-            double total = price * SUMMER_DISCOUNT_CONSTANT;
-            // code...
-        }
-
- 
     }
 }

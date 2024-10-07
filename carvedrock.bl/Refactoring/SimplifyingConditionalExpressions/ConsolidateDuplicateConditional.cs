@@ -26,20 +26,17 @@ namespace carvedrock.bl.refactoring.SimplifyingConditionalExpressions
     {
         public decimal GetTotalWithShipping (ShoppingCart cart, bool isSpecialCustomer, decimal shipping)
         {
+            decimal total = cart.GetSubTotal();
             if (isSpecialCustomer)
             {
-                decimal total = cart.GetSubTotal();
                 total *= 0.70M;
-                total += shipping;
-                return total;
             }
             else
             {
-                decimal total = cart.GetSubTotal();
                 total *= 0.99M;
-                total += shipping;
-                return total;
             }
+            total += shipping;
+            return total;
         }
     }
 }

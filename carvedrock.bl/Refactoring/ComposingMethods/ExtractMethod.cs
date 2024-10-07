@@ -1,4 +1,5 @@
-﻿namespace carvedrock.bl.refactoring.ComposingMethods
+﻿
+namespace carvedrock.bl.refactoring
 {
     public class ExtractMethod
     {
@@ -6,14 +7,15 @@
         {
             int a = 1;
             int b = 2;
-            int c = ((a - (b / 2)) ^ a) / b;
-            int d = ((b - (c / 2)) ^ b) / c;
-            int f = ((c - (d / 2)) ^ c) / d;
+            int c = ComplexEquation(a, b);
+            int d = ComplexEquation(b, c);
+            int f = ComplexEquation(c, d);
             Console.WriteLine(f);
+        }
 
-            // 1. Select code
-            // 2. Quick actions and Refactorings
-            // 3. Extract method
+        private static int ComplexEquation(int a, int b)
+        {
+            return ((a - (b / 2)) ^ a) / b;
         }
     }
 }

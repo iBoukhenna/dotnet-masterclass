@@ -4,9 +4,7 @@
     {
         public static double UpdatePrice(double total, double discountPercent)
         {
-            var discount = total * discountPercent;
-            total -= discount;
-            return total;
+            return total - (total * discountPercent);
         }
     }
 }

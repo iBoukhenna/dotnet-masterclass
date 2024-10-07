@@ -23,12 +23,22 @@
     {
         public static double TotalPrice(Order order)
         {
-            return order.Quantity * order.Price - Math.Max(0, order.Quantity - 600) * order.Price * 0.07 + Math.Min(order.Quantity * order.Price * 0.3, 100);
+            double itemPrice = order.Price;
+            int itemQuantity = order.Quantity;
+            double basePrice = itemQuantity * itemPrice;
+            double quantityDiscount = Math.Max(0, itemQuantity - 600) * itemPrice * 0.07;
+            double shipping = Math.Min(basePrice * 0.3, 100);
+            return basePrice - quantityDiscount + shipping;
         }
 
         public static bool IsTrailExtraordinary(Trail trail)
         {
-            return (trail.Length > 200) && trail.Difficulty < 4 && (trail.Elevation > 100) && trail.Activities!.Count() > 10;
+            bool isTrailShort = trail.Length > 200;
+            bool isTrailEasy = trail.Difficulty < 4;
+            bool isTrailtooElevated = trail.Elevation > 100;
+            bool hasManyActivities = trail.Activities!.Count() > 10;
+
+            return isTrailShort && isTrailEasy && !isTrailtooElevated && hasManyActivities;
         }
     }
 }

@@ -1,7 +1,7 @@
 ﻿
 namespace carvedrock.bl.refactoring.DealingWithGeneralization.ExtractInterface
 {
-    public class MokaEspressoMaker
+    public class MokaEspressoMaker : ICoffeeMachine
     {
         private double _coffeeBeans;
         private double _water;
@@ -11,12 +11,12 @@ namespace carvedrock.bl.refactoring.DealingWithGeneralization.ExtractInterface
 
         public void AddCoffee()
         {
-            // Add 0.50 pounds of Costa Rican Coffee
+            // Add 0.50 pounds of Costa Rican coffee
             CoffeeBeans += 0.50;
         }
         public void AddWater()
         {
-            // Adds 500 mL of water
+            // Add 500 mL of water
             Water += 0.5;
         }
         public void GetSomeCoffee()

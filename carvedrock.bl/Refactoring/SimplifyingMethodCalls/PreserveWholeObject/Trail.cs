@@ -1,4 +1,4 @@
-namespace carvedrock.bl.refactoring.SimplifyingMethodCalls.PreserveWholeObject
+namespace carvedrock.bl.refactoring.SimplifyinMethodCalls.PreserveWholeObject
 {
     public class Trail
     {
@@ -10,7 +10,7 @@ namespace carvedrock.bl.refactoring.SimplifyingMethodCalls.PreserveWholeObject
         private TrailActivity activities;
         private TrailExtras extras;
 
-        public int Id { get { return id; } set { id = value; } }
+        public int Id { get { return id; } set { id = value; }  }
         public string? Name { get { return name; } set { name = value; } }
         public decimal Length { get { return length; } set { length = value; } }
         public int Elevation { get { return elevation; } set { elevation = value; } }
@@ -28,6 +28,7 @@ namespace carvedrock.bl.refactoring.SimplifyingMethodCalls.PreserveWholeObject
             this.Length = Length;
             this.Elevation = Elevation;
             this.Rating = Rating;
+   
         }
     }
 }

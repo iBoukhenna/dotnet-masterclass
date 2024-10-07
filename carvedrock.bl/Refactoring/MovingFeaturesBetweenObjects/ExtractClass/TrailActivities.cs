@@ -1,6 +1,6 @@
-namespace carvedrock.bl.refactoring.SimplifyinMethodCalls.PreserveWholeObject
+namespace carvedrock.bl.refactoring.MovingFeaturesBetweenObjects.ExtractClass
 {
-    public struct TrailActivity
+    public struct TrailActivities
     {
         public bool Hiking { get; set; }
         public bool MountainBiking { get; set; }
@@ -12,5 +12,4 @@ namespace carvedrock.bl.refactoring.SimplifyinMethodCalls.PreserveWholeObject
         public bool Fishing { get; set; }
         public bool HorsebackRiding { get; set; }
     }
-
 }

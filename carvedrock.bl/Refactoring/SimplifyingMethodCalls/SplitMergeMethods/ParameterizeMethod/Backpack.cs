@@ -1,6 +1,5 @@
 namespace carvedrock.bl.refactoring.SimplifyinMethodCalls.SplitMergeMethods.ParameterizeMethod
 {
-
     public class Backpack
     {
         private string? name;
@@ -8,7 +7,7 @@ namespace carvedrock.bl.refactoring.SimplifyinMethodCalls.SplitMergeMethods.Para
         private int capacity;
         private double weight;
         private bool isWaterproof;
-
+    
         public string? Name { get { return name; } set { name = value; } }
         public double Price { get { return price; } set { price = value; } }
         public int Capacity { get { return capacity; } set { capacity = value; } }

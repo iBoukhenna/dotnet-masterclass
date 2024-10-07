@@ -1,4 +1,4 @@
-namespace carvedrock.bl.refactoring.SimplifyingMethodCalls.PreserveWholeObject
+namespace carvedrock.bl.refactoring.SimplifyinMethodCalls.PreserveWholeObject
 {
     public struct TrailExtras
     {

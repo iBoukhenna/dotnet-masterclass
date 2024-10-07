@@ -12,20 +12,31 @@ namespace carvedrock.bl.refactoring.SimplifyingConditionalExpressions
         
         public decimal EstimateTrailFee(Trail trail)
         {
-            DateTime today = DateTime.Now;
-            decimal fee = 0;
-            decimal HighSeasonRate = 1.5M;
-
-            if (today.Month > 7 && today.Month < 12)
+            if (IsHighSeason())
             {
-                fee = (basePrice * HighSeasonRate) + (trail.Atractions.Count() * 2);
+                return EstimateHighSeasonFee(trail.Atractions.Count);
             }
             else
             {
-
-                fee = basePrice + (trail.Atractions.Count() * 0.5M);
+                return EstimateLowSeasonFee(trail.Atractions.Count);
             }
-            return fee;
+        }
+
+        private static bool IsHighSeason()
+        {
+            DateTime today = DateTime.Now;
+            return (today.Month > 7) && (today.Month < 12);
+        }
+
+        private static decimal EstimateHighSeasonFee(int trailAtractions)
+        {
+            decimal HighSeasonRate = 1.5M;
+            return (basePrice * HighSeasonRate) + (trailAtractions * 2);
+        }
+
+        private static decimal EstimateLowSeasonFee(int trailAtractions)
+        {
+            return basePrice + (trailAtractions * 0.5M);
         }
     }
 }

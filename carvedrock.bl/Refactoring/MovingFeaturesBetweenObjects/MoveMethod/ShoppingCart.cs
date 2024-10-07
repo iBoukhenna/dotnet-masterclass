@@ -3,7 +3,13 @@ namespace carvedrock.bl.refactoring.MovingFeaturesBetweenObjects.MoveMethod
 {
     public class ShoppingCart
     {
-        public List<(Product, int)> Items { get; set; } = new();
+        private List<(Product, int)> items = new();
+
+
+        public void AddToCart(Product product, int number)
+        {
+            items.Add((product, number));
+        }
 
     }
 }

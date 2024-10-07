@@ -3,24 +3,32 @@ namespace carvedrock.bl.refactoring.OrganizingData.ReplaceMagicNumber
 {
     public class ReplaceMagicNumber
     {
-        
-        public int EstimateTrailDifficulty(double length, double elevation)
+        const int SmallDistance = 5;
+        const int MediumDistance = 8;
+        const int LongDistance = 12;
+
+        const int SoftElevation = 500;
+        const int MediumElevation = 1500;
+        const int StrongElevation = 3000;
+
+
+        public Difficulty EstimateTrailDifficulty(double length, double elevation)
         {
-            if ((length < 5) && (elevation < 500))
+            if ((length < SmallDistance) && (elevation < SoftElevation))
             {
-                return 0;
+                return Difficulty.Easy;
             }
-            else if ((length < 8) && (elevation < 1500))
+            else if ((length < MediumDistance) && (elevation < MediumElevation))
             {
-                return 1;
+                return Difficulty.Moderate;
             }
-            if ((length < 12) && (elevation < 3000))
+            if ((length < LongDistance) && (elevation < StrongElevation))
             {
-                return 2;
+                return Difficulty.Hard;
             }
             else
             {
-                return -1;
+                return Difficulty.ExtremelyHard;
             }
         }
     }

@@ -1,7 +1,7 @@
 ﻿
 namespace carvedrock.bl.refactoring.DealingWithGeneralization.ExtractInterface
 {
-    public class CoffeeMaker
+    public class CoffeeMaker : ICoffeeMachine
     {
         private int _coffeeBeans;
         private int _water;
