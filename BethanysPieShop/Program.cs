@@ -2,6 +2,7 @@ using BethanysPieShop.App;
 using BethanysPieShop.Models;
 using Microsoft.EntityFrameworkCore;
 using System.Text.Json.Serialization;
+using Microsoft.AspNetCore.Identity;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -34,6 +35,8 @@ builder.Services.AddDbContext<BethanysPieShopDbContext>(options => {
 var app = builder.Build();
 
 //app.MapGet("/", () => "Hello World!");
+
+app.UseAuthentication();
 if (app.Environment.IsDevelopment())
 {
     app.UseDeveloperExceptionPage();
