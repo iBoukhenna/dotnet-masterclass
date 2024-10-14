@@ -5,6 +5,13 @@ using System.Text.Json.Serialization;
 using Microsoft.AspNetCore.Identity;
 
 var builder = WebApplication.CreateBuilder(args);
+var connectionString = builder.Configuration.GetConnectionString("BethanysPieShopDbContextConnection") ?? throw new InvalidOperationException("Connection string 'BethanysPieShopDbContextConnection' not found.");
+
+builder.Services.AddDbContext<BethanysPieShopDbContext>(options =>
+    options.UseSqlServer(connectionString));;
+
+builder.Services.AddDefaultIdentity<IdentityUser>()
+    .AddEntityFrameworkStores<BethanysPieShopDbContext>();
 
 builder.Services.AddControllersWithViews().AddJsonOptions(options => {
     options.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles;
@@ -24,6 +31,7 @@ builder.Services.AddSession();
 builder.Services.AddHttpContextAccessor();
 
 builder.Services.AddRazorPages();
+//builder.Services.AddServerSideBlazor();
 builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents();
 
@@ -35,8 +43,6 @@ builder.Services.AddDbContext<BethanysPieShopDbContext>(options => {
 var app = builder.Build();
 
 //app.MapGet("/", () => "Hello World!");
-
-app.UseAuthentication();
 if (app.Environment.IsDevelopment())
 {
     app.UseDeveloperExceptionPage();
@@ -45,10 +51,11 @@ if (app.Environment.IsDevelopment())
 app.UseStaticFiles();
 app.UseSession();
 
-app.MapDefaultControllerRoute();
-//app.MapControllerRoute(
-//    name: "default",
-//    pattern: "{controller=Home}/{action=Index}/{id?}");
+app.UseAuthentication();
+//app.MapDefaultControllerRoute();
+app.MapControllerRoute(
+    name: "default",
+    pattern: "{controller=Home}/{action=Index}/{id?}");
 //app.MapController();
 
 app.UseAntiforgery();
@@ -58,6 +65,8 @@ app.MapRazorPages();
 app.MapRazorComponents<App>()
     .AddInteractiveServerRenderMode();
 
+//app.MapFallbackToPage("/app/{*catchall}", "/App/Index");
+//app.MapBlazorHub();
 
 DbInitializer.Seed(app);
 

@@ -11,6 +11,7 @@
     <script src="~/lib/bootstrap/js/bootstrap.js"></script>
     <link href="~/css/site.css" rel="stylesheet" />
     <base href="/" />
+    @* <base href="~/" /> *@
 </head>
 <body>
     <div class="container">
@@ -44,6 +45,7 @@
                                 </a>
                             </li>
                         </ul>
+                         <partial name="_LoginPartial" />
                         <vc:shopping-cart-summary></vc:shopping-cart-summary>
                     </div>
                 </div>
@@ -53,6 +55,9 @@
         @RenderBody()
 
         <script src="_framework/blazor.web.js"></script>
+
+
+        @RenderSection("Scripts", required: false)
     </div>
 </body>
 </html>
