@@ -1,0 +1,19 @@
+1. Publish the app as a framework-dependent deployment
+
+1.1. Run the following command to publish the app:
+dotnet publish -c Release -o publish-fd
+cd publish-fd
+dotnet MyWebApp.dll
+
+2. Publish as a self-contained deployment
+
+2.1. Run the following command to publish the app as a self-contained deployment for 64-bit Windows:
+dotnet publish -c Release -r win-x64 -o publish-scd-win64 --self-contained
+cd publish-scd-win64
+MyWebApp.exe
+
+2.2. Run the following command to publish the app as a self-contained deployment for 64-bit Linux:
+dotnet publish -c Release -r linux-x64 -o publish-scd-linux64 --self-contained
+cd publish-scd-linux64
+chmod +x MyWebApp
+MyWebApp
