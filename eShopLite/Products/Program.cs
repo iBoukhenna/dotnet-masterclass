@@ -3,6 +3,8 @@ using Products.Data;
 using Products.Endpoints;
 
 var builder = WebApplication.CreateBuilder(args);
+builder.AddServiceDefaults();
+
 builder.Services.AddDbContext<ProductDataContext>(options =>
     options.UseSqlite(builder.Configuration.GetConnectionString("ProductsContext") ?? throw new InvalidOperationException("Connection string 'ProductsContext' not found.")));
 
