@@ -1,9 +1,12 @@
 var builder = DistributedApplication.CreateBuilder(args);
 
+var redis = builder.AddRedis("cache");
+
 var apiService = builder.AddProject<Projects.eShop_ApiService>("apiservice");
 
 builder.AddProject<Projects.eShop_Web>("webfrontend")
     .WithExternalHttpEndpoints()
-    .WithReference(apiService);
+    .WithReference(apiService)
+    .WithReference(redis);
 
 builder.Build().Run();

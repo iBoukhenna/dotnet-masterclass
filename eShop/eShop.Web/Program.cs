@@ -3,6 +3,9 @@ using eShop.Web.Components;
 
 var builder = WebApplication.CreateBuilder(args);
 
+// Add Redis caching
+builder.AddRedisOutputCache("cache");
+
 // Add service defaults & Aspire components.
 builder.AddServiceDefaults();
 
