@@ -4,6 +4,8 @@ using Microsoft.EntityFrameworkCore;
 using eShop.Catalog.API;
 using eShop.Catalog.API.Model;
 using eShop.Catalog.Data;
+using Microsoft.Extensions.Caching.Distributed;
+using System.Text;
 
 namespace Microsoft.AspNetCore.Builder;
 
@@ -47,8 +49,8 @@ public static class CatalogApi
             .ToListAsync();
 
         ChangeUriPlaceholder(services.Options.Value, itemsOnPage);
-
         return TypedResults.Ok(new PaginatedItems<CatalogItem>(pageIndex, pageSize, totalItems, itemsOnPage));
+        
     }
 
     public static async Task<Ok<List<CatalogItem>>> GetItemsByIds(
