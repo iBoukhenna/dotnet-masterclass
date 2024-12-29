@@ -14,3 +14,7 @@ dotnet sln .\eShopLite.sln add .\eShopLite.ServiceDefaults\eShopLite.ServiceDefa
 dotnet add .\Store\Store.csproj reference .\eShopLite.ServiceDefaults\eShopLite.ServiceDefaults.csproj
 dotnet add .\Products\Products.csproj reference .\eShopLite.ServiceDefaults\eShopLite.ServiceDefaults.csproj
 
+User : test@example.com
+Pass : P@$$w0rd1
+
+

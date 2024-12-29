@@ -2,8 +2,6 @@
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.AddRedisOutputCache("cache");
-
 builder.AddServiceDefaults();
 
 builder.Services.AddRazorComponents().AddInteractiveServerComponents();
@@ -11,8 +9,6 @@ builder.Services.AddRazorComponents().AddInteractiveServerComponents();
 builder.AddApplicationServices();
 
 var app = builder.Build();
-
-app.UseOutputCache();
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
