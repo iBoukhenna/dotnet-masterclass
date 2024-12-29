@@ -1,8 +1,9 @@
 
 dotnet new aspire-starter --output eShop
 
-dotnet add eShop.AppHost.csproj package Aspire.Hosting.Redis --version 8.0.0 
+dotnet add eShop.AppHost.csproj package Aspire.Hosting.Redis --version 8.0.0
 dotnet add eShop.Web.csproj package Aspire.StackExchange.Redis.OutputCaching --version 8.0.0
+dotnet add eShop.API.csproj package Aspire.StackExchange.Redis.DistributedCache --version 8.0.0
 
 dotnet new aspire-apphost -o eShopLite.AppHost
 dotnet sln .\eShopLite.sln add .\eShopLite.AppHost\eShopLite.AppHost.csproj
