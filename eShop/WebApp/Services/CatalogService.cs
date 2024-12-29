@@ -2,7 +2,7 @@
 
 namespace eShop.WebApp.Services;
 
-public class CatalogService(HttpClient httpClient)
+public partial class CatalogService(HttpClient httpClient, ILogger<CatalogService> logger)
 {
     private readonly string remoteServiceBaseUrl = "api/v1/catalog/";
 
@@ -23,6 +23,7 @@ public class CatalogService(HttpClient httpClient)
     public async Task<IEnumerable<CatalogBrand>> GetBrands()
     {
         var uri = $"{remoteServiceBaseUrl}catalogBrands";
+        LogGetBrands(uri, logger);
         var result = await httpClient.GetFromJsonAsync<CatalogBrand[]>(uri);
         return result ?? [];
     }
@@ -62,4 +63,10 @@ public class CatalogService(HttpClient httpClient)
 
         return $"{baseUri}items{filterPath}?pageIndex={pageIndex}&pageSize={pageSize}";
     }
+
+    [LoggerMessage(
+        EventId = 0,
+        Level = LogLevel.Information,
+        Message = "Getting brands from URI: {uri}")]
+    public static partial void LogGetBrands(string uri, ILogger logger);
 }
