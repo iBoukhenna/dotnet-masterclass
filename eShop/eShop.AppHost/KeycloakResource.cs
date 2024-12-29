@@ -1,7 +1,4 @@
-﻿using Aspire.Hosting.ApplicationModel;
-using Aspire.Hosting.Publishing;
-
-namespace Aspire.Hosting;
+﻿namespace Aspire.Hosting;
 
 internal static class KeycloakHostingExtensions
 {

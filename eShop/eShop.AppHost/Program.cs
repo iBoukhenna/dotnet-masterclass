@@ -1,8 +1,14 @@
+using Projects;
+
 var builder = DistributedApplication.CreateBuilder(args);
 
 // Databases
 
-var basketStore = builder.AddRedis("BasketStore").WithRedisCommander();
+var postgres = builder.AddPostgres("postgres").WithPgAdmin();
+var catalogDb = postgres.AddDatabase("CatalogDB");
+var mongo = builder.AddMongoDB("mongo")
+  .WithMongoExpress()
+  .AddDatabase("BasketDB");
 
 // Identity Providers
 
@@ -11,14 +17,16 @@ var idp = builder.AddKeycloakContainer("idp", tag: "23.0")
 
 // DB Manager Apps
 
-builder.AddProject<Projects.Catalog_Data_Manager>("catalog-db-mgr");
+builder.AddProject<Catalog_Data_Manager>("catalog-db-mgr")
+    .WithReference(catalogDb);
 
 // API Apps
 
-var catalogApi = builder.AddProject<Projects.Catalog_API>("catalog-api");
+var catalogApi = builder.AddProject<Catalog_API>("catalog-api")
+    .WithReference(catalogDb);
 
-var basketApi = builder.AddProject<Projects.Basket_API>("basket-api")
-        .WithReference(basketStore)
+var basketApi = builder.AddProject<Basket_API>("basket-api")
+        .WithReference(mongo)
         .WithReference(idp);
 
 // Apps
