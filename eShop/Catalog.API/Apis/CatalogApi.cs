@@ -6,6 +6,7 @@ using eShop.Catalog.API.Model;
 using eShop.Catalog.Data;
 using Microsoft.Extensions.Caching.Distributed;
 using System.Text;
+using RabbitMQ.Client;
 
 namespace Microsoft.AspNetCore.Builder;
 
@@ -34,13 +35,28 @@ public static class CatalogApi
     public static async Task<Results<Ok<PaginatedItems<CatalogItem>>, BadRequest<string>>> GetAllItems(
         [AsParameters] PaginationRequest paginationRequest,
         [AsParameters] CatalogServices services,
-        IDistributedCache cache)
+        IDistributedCache cache,
+        RabbitMQ.Client.IConnection connection)
     {
         var pageSize = paginationRequest.PageSize;
         var pageIndex = paginationRequest.PageIndex;
 
         var totalItems = await services.DbContext.CatalogItems
             .LongCountAsync();
+
+        // Send a message to the queue in RabbitMQ
+        var channel = connection.CreateModel();
+        channel.QueueDeclare(queue: "catalogEvents",
+                         durable: false,
+                         exclusive: false,
+                         autoDelete: false,
+                         arguments: null);
+        var body = Encoding.UTF8.GetBytes("Getting all items in the catalog.");
+
+        channel.BasicPublish(exchange: string.Empty,
+                             routingKey: "catalogEvents",
+                             basicProperties: null,
+                             body: body);
 
         // Check it there are cached items
         var cachedItems = await cache.GetAsync("catalogItems");

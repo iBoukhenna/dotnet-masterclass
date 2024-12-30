@@ -15,6 +15,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "eShop.AppHost", "eShop.AppH
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebApp", "WebApp\WebApp.csproj", "{75388C09-8F9E-4FD1-97DB-E16665F875D4}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RabbitConsumer", "RabbitConsumer\RabbitConsumer.csproj", "{B484A265-BA1F-45CC-9E8F-9C870486B838}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -45,8 +47,15 @@ Global
 		{75388C09-8F9E-4FD1-97DB-E16665F875D4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{75388C09-8F9E-4FD1-97DB-E16665F875D4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{75388C09-8F9E-4FD1-97DB-E16665F875D4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B484A265-BA1F-45CC-9E8F-9C870486B838}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B484A265-BA1F-45CC-9E8F-9C870486B838}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B484A265-BA1F-45CC-9E8F-9C870486B838}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B484A265-BA1F-45CC-9E8F-9C870486B838}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {A2EE1E80-08A7-41B6-9C39-A27B84225F2B}
 	EndGlobalSection
 EndGlobal

@@ -2,6 +2,10 @@ using Projects;
 
 var builder = DistributedApplication.CreateBuilder(args);
 
+// RabbitMQ message broker
+
+var messaging = builder.AddRabbitMQ("messaging");
+
 // Databases
 
 var postgres = builder.AddPostgres("postgres").WithPgAdmin();
@@ -21,13 +25,17 @@ builder.AddProject<Catalog_Data_Manager>("catalog-db-mgr")
 
 var catalogApi = builder.AddProject<Catalog_API>("catalog-api")
     .WithReference(catalogDb)
-    .WithReference(redis);
+    .WithReference(redis)
+    .WithReference(messaging);
 
 // Apps
 
 builder.AddProject<WebApp>("webapp")
     .WithReference(catalogApi)
     .WithReference(redis);
+
+builder.AddProject<Projects.RabbitConsumer>("consumers").
+        WithReference(messaging);
 
 // Inject assigned URLs for Catalog API
 catalogApi.WithEnvironment("CatalogOptions__PicBaseAddress", () => catalogApi.GetEndpoint("http").Url);
